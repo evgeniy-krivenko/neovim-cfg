@@ -11,12 +11,12 @@ local options = {
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 800,
     lsp_fallback = true,
   },
   formatters = {
     golines = {
-      args = { "--max-len=130" },
+      args = { "--max-len=130", "--timeout=1m" },
     },
     gci = {
       args = { "write", "-s=standard", "-s=default", "-s=prefix(fastronom)", "--skip-generated", "--skip-vendor", "--custom-order", "$FILENAME" }

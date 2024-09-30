@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = 'BufWritePre', -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -20,21 +20,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- {
-  --   "evgeniy-krivenko/nvim-test",
-  --   lazy = false,
-  --   config = function()
-  --     require('nvim-test').setup {
-  --       commands_create = true,
-  --       run = true,
-  --       silent = false,
-  --       runners = {
-  --         go = "nvim-test.runners.go-test",
-  --       }
-  --     }
-  --   end
-  -- },
-  --
   {
     "williamboman/mason.nvim",
     opts = {
@@ -48,9 +33,20 @@ return {
         "helm-ls",
         "yaml-language-server",
         "json-lsp",
+        "templ",
         -- "sqls",
       },
     },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    lazy = false,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npx --yes yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
   },
   -- syntax highlithing
   {
@@ -66,11 +62,15 @@ return {
         "sql",
         "yaml",
         "json",
+        "mermaid",
+        "templ",
+        "tmux",
       },
     },
   },
   {
     "christoomey/vim-tmux-navigator",
+    lazy = false,
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
@@ -86,6 +86,12 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    -- for pretty edit
+    "stevearc/dressing.nvim",
+    lazy = false,
+    opts = {},
+  },
   { "nvim-neotest/nvim-nio" },
   { "nvim-lua/plenary.nvim" },
   { "antoinemadec/FixCursorHold.nvim" },
@@ -98,10 +104,8 @@ return {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
-
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
-
       {
         "fredrikaverpil/neotest-golang",
         dependencies = {
@@ -124,6 +128,7 @@ return {
           -- "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
         },
         dap_go_enabled = true,
+        testify_enabled = true,
       }
     end,
     config = function(_, opts)
@@ -229,5 +234,9 @@ return {
       { "<leader>dt", function() require("dap").terminate() end,                                            desc = "[d]ebug [t]erminate" },
       { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "[d]ebug [w]idgets" },
     },
+  },
+  {
+    "Exafunction/codeium.vim",
+    lazy = false,
   },
 }
