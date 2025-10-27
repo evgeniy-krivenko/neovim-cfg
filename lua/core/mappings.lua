@@ -218,7 +218,7 @@ map({"n", "x" }, "<leader>pws", function() require("snacks").picker.grep_word() 
 map("n", "<leader>e", function() require("snacks").picker.explorer({ auto_close = true }) end, { desc = "Snacks Explorer" })
 
 -- Telescope (Deprecated)
-map("n", "-", ":Telescope file_browser<CR>", opt("Telescope file browser"))
+-- map("n", "-", ":Telescope file_browser<CR>", opt("Telescope file browser"))
 -- map("n", "=", "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=dropdown<cr>")
 map("n", "<leader>fr", function() require("telescope.builtin").find_files() end, opt("Find files")) -- Lists files in your current working directory, respects .gitignore
 map("n", "<leader>fx", function() require("telescope.builtin").treesitter() end, opt("Treesitter symbols")) -- Lists tree-sitter symbols
