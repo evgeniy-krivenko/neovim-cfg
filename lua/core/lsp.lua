@@ -14,6 +14,7 @@ local config = {
   update_in_insert = true,
   underline = true,
   severity_sort = true,
+  virtual_text = false,
   float = {
     focusable = false,
     style     = "minimal",
@@ -101,6 +102,7 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("basedpyright")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("bashls")
 vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls" })
