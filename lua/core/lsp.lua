@@ -85,14 +85,24 @@ local icons = {
 vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust_analyzer"] = {
-      inlayHints = {
-        enable = false,
-        typeHints = { enable = false },
-        parameterHints = { enable = false },
-        chainingHints = { enable = false },
+      cargo = {
+        loadOutDirsFromCheck = false,
+      },
+      checkOnSave = {
+        command = "check"
+      },
+      -- inlayHints = {
+      --   enable = false,
+      --   typeHints = { enable = false },
+      --   parameterHints = { enable = false },
+      --   chainingHints = { enable = false },
+      -- },
+      procMacro = {
+        enable = false
       },
       diagnostics = {
-        enable = false
+        enable = true,
+        disabled = { "unresolved-proc-macro" },
       }
     }
   }
